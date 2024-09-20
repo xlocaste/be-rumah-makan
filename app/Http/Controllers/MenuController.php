@@ -6,7 +6,6 @@ use App\Http\Requests\MenuStoreRequest;
 use App\Http\Requests\MenuUpdateRequest;
 use App\Http\Resources\MenuResource;
 use App\Models\Menu;
-use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -52,7 +51,7 @@ class MenuController extends Controller
         ]);
     }
 
-    public function destrey(Menu $menu)
+    public function destroy(Menu $menu)
     {
         $menu->delete();
 

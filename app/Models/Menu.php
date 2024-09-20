@@ -17,7 +17,7 @@ class Menu extends Model
         'rumah_makan_id',
     ];
 
-    public function RumahMakan()
+    public function rumah_makan()
     {
         return $this->belongsTo(RumahMakan::class);
     }

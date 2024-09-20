@@ -12,10 +12,10 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logo
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::group(['middleware' => ['role:admin|pemilikUsaha']], function () {
-        Route::get('/rumah-makan', [RumahMakanController::class, 'index']);
-        Route::get('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'show']);
         Route::get('/menu', [MenuController::class, 'index']);
         Route::get('/menu/{menu}', [MenuController::class, 'show']);
+        Route::get('/rumah-makan', [RumahMakanController::class, 'index']);
+        Route::get('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'show']);
 
     });
 

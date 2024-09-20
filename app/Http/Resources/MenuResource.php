@@ -22,7 +22,7 @@ class MenuResource extends JsonResource
             'created_at' => $this -> created_at,
             'updated_at' => $this -> updated_at,
 
-            'rumahMakan' => new RumahMakanResource($this->whenLoaded('rumahMakan')),
+            'rumah_makan' => new RumahMakanResource($this->whenLoaded('rumah_makan')),
         ];
     }
 }
