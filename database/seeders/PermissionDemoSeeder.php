@@ -39,5 +39,9 @@ class PermissionDemoSeeder extends Seeder
         $pemilikUsahaRole->givePermissionTo('create menu');
         $pemilikUsahaRole->givePermissionTo('edit menu');
         $pemilikUsahaRole->givePermissionTo('delete menu');
+
+        $pelangganRole = Role::create(['name' => 'pelanggan']);
+        $pelangganRole->givePermissionTo('view rumah makan');
+        $pelangganRole->givePermissionTo('view menu');
     }
 }

@@ -19,6 +19,7 @@ class MenuResource extends JsonResource
             'nama' => $this -> nama,
             'kategori' => $this -> kategori,
             'rumah_makan_id' => $this -> rumah_makan_id,
+            'status' => $this -> status,
             'created_at' => $this -> created_at,
             'updated_at' => $this -> updated_at,
 

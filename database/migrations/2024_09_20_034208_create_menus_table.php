@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('kategori');
+            $table->string('stok');
             $table->unsignedBigInteger('rumah_makan_id');
             $table->timestamps();
 

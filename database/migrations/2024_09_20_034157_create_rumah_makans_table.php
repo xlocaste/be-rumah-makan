@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->time('jam_buka');
             $table->time('jam_tutup');
+            $table->enum('status', ['Buka', 'Tutup', 'Tutup Sementara'])->default('Tutup Sementara');
             $table->timestamps();
         });
     }
