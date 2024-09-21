@@ -6,12 +6,13 @@ use App\Http\Requests\MenuStoreRequest;
 use App\Http\Requests\MenuUpdateRequest;
 use App\Http\Resources\MenuResource;
 use App\Models\Menu;
+use App\Models\RumahMakan;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index($rumahMakan)
     {
-        $daftarMenu = Menu::with('rumah_makan')->get();
+        $daftarMenu = Menu::with('rumah_makan')->where('rumah_makan_id', $rumahMakan)->get();
 
         return MenuResource::collection($daftarMenu);
     }
@@ -29,12 +30,14 @@ class MenuController extends Controller
         ]);
     }
 
-    public function update(MenuUpdateRequest $request, Menu $menu)
+    public function update(MenuUpdateRequest $request, $rumahMakanId, Menu $menu)
     {
+        $rumahMakan = RumahMakan::findOrFail($rumahMakanId);
+
         $menu->update([
-            'nama' => $request -> nama,
-            'kategori' => $request -> kategori,
-            'rumah_makan_id' => $request -> rumah_makan_id,
+            'nama' => $request->nama,
+            'kategori' => $request->kategori,
+            'rumah_makan_id' => $rumahMakan->id,
         ]);
 
         return (new MenuResource($menu))->additional([
@@ -42,9 +45,12 @@ class MenuController extends Controller
         ]);
     }
 
-    public function show($menu)
+
+    public function show($rumahMakan, $menu)
     {
-        $menu = Menu::findOrFail($menu);
+        $rumahMakan = RumahMakan::findOrFail($rumahMakan);
+
+        $menu = Menu::where('id', $menu)->where('rumah_makan_id', $rumahMakan->id)->firstOrFail();
 
         return (new MenuResource($menu))->additional([
             'message' => 'Data berhasil di Dapatkan'

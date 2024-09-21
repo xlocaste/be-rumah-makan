@@ -12,8 +12,8 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logo
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::group(['middleware' => ['role:admin|pemilikUsaha']], function () {
-        Route::get('/menu', [MenuController::class, 'index']);
-        Route::get('/menu/{menu}', [MenuController::class, 'show']);
+        Route::get('rumah-makan/{rumahMakan}/menu', [MenuController::class, 'index']);
+        Route::get('rumah-makan/{rumahMakan}/menu/{menu}', [MenuController::class, 'show']);
         Route::get('/rumah-makan', [RumahMakanController::class, 'index']);
         Route::get('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'show']);
 
@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::group(['middleware' => ['role:pemilikUsaha']], function () {
         Route::post('/menu', [MenuController::class, 'store']);
-        Route::put('/menu/{menu}', [MenuController::class, 'update']);
+        Route::put('rumah-makan/{rumahMakan}/menu/{menu}', [MenuController::class, 'update']);
         Route::delete('/menu/{menu}', [MenuController::class, 'destroy']);
     });
 

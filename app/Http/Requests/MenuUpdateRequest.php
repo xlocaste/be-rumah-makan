@@ -24,7 +24,7 @@ class MenuUpdateRequest extends FormRequest
         return [
             'nama'=>'required',
             'kategori'=>'required',
-            'rumah_makan_id'=>'required',
+            // 'rumah_makan_id'=>'required',
         ];
     }
 }
