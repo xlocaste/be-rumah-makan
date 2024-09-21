@@ -20,6 +20,7 @@ class RumahMakanResource extends JsonResource
             'alamat' => $this -> alamat,
             'jam_buka' => $this -> jam_buka,
             'jam_tutup' => $this -> jam_tutup,
+            'status' => $this -> status,
             'created_at' => $this -> created_at,
             'updated_at' => $this -> updated_at,
         ];

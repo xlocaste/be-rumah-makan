@@ -22,6 +22,7 @@ class MenuController extends Controller
         $menu = Menu::create([
             'nama' => $request -> nama,
             'kategori' => $request -> kategori,
+            'stok' => $request -> stok,
             'rumah_makan_id' => $request -> rumah_makan_id,
         ]);
 
@@ -37,6 +38,7 @@ class MenuController extends Controller
         $menu->update([
             'nama' => $request->nama,
             'kategori' => $request->kategori,
+            'stok' => $request->stok,
             'rumah_makan_id' => $rumahMakan->id,
         ]);
 

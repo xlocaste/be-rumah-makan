@@ -10,55 +10,55 @@ use App\Models\RumahMakan;
 class RumahMakanController extends Controller
 {
     public function index()
-   {
-    $daftarRumahMakan = RumahMakan::get();
+    {
+        $daftarRumahMakan = RumahMakan::get();
 
-    return RumahMakanResource::collection($daftarRumahMakan);
-   }
+        return RumahMakanResource::collection($daftarRumahMakan);
+    }
 
-   public function store(RumahMakanStoreRequest $request)
-   {
-    $rumahMakan = RumahMakan::create([
-        'nama' => $request -> nama,
-        'alamat' => $request -> alamat,
-        'jam_buka' => $request -> jam_buka,
-        'jam_tutup' => $request -> jam_tutup,
-    ]);
+    public function store(RumahMakanStoreRequest $request)
+    {
+        $rumahMakan = RumahMakan::create([
+            'nama' => $request -> nama,
+            'alamat' => $request -> alamat,
+            'jam_buka' => $request -> jam_buka,
+            'jam_tutup' => $request -> jam_tutup,
+        ]);
 
-    return (new RumahMakanResource($rumahMakan))->additional([
-        'message' => 'Data berhasil di Tmabahkan'
-    ]);
-   }
+        return (new RumahMakanResource($rumahMakan))->additional([
+            'message' => 'Data berhasil di Tmabahkan'
+        ]);
+    }
 
-   public function update(RumahMakanUpdateRequest $request, RumahMakan $rumahMakan)
-   {
-    $rumahMakan->update([
-        'nama' => $request -> nama,
-        'alamat' => $request -> alamat,
-        'jam_buka' => $request -> jam_buka,
-        'jam_tutup' => $request -> jam_tutup,
-    ]);
+    public function update(RumahMakanUpdateRequest $request, RumahMakan $rumahMakan)
+    {
+        $rumahMakan->update([
+            'nama' => $request -> nama,
+            'alamat' => $request -> alamat,
+            'jam_buka' => $request -> jam_buka,
+            'jam_tutup' => $request -> jam_tutup,
+        ]);
 
-    return (new RumahMakanResource($rumahMakan))->additional([
-        'message' => 'Data berhasil di Update'
-    ]);
-   }
+        return (new RumahMakanResource($rumahMakan))->additional([
+            'message' => 'Data berhasil di Update'
+        ]);
+    }
 
-   public function show($rumahMakan)
-   {
-    $rumahMakan = RumahMakan::findOrFail($rumahMakan);
+    public function show($rumahMakan)
+    {
+        $rumahMakan = RumahMakan::findOrFail($rumahMakan);
 
-    return (new RumahMakanResource($rumahMakan))->additional([
-        'message' => 'Data berhasil di dapatkan'
-    ]);
-   }
+        return (new RumahMakanResource($rumahMakan))->additional([
+            'message' => 'Data berhasil di dapatkan'
+        ]);
+    }
 
-   public function destroy(RumahMakan $rumahMakan)
-   {
-    $rumahMakan->delete();
+    public function destroy(RumahMakan $rumahMakan)
+    {
+        $rumahMakan->delete();
 
-    return response()->json([
-        'message' => 'Data berhasil di Hapus'
-    ]);
-   }
+        return response()->json([
+            'message' => 'Data berhasil di Hapus'
+        ]);
+    }
 }
