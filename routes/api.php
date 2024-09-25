@@ -16,9 +16,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('rumah-makan/{rumahMakan}/menu/{menu}', [MenuController::class, 'show']);
         Route::get('/rumah-makan', [RumahMakanController::class, 'index']);
         Route::get('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'show']);
-        Route::put('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'update']);
+    });
+    
+    Route::group(['middleware' => ['role:pelanggan']], function () {
+        Route::post('/pesan-menu/{menuId}', [MenuController::class, 'pesan']);
     });
 
+    Route::group(['middleware' => ['role:admin|pemilikUsaha']], function () {
+        Route::put('/rumah-makan/{rumahMakan}', [RumahMakanController::class, 'update']);
+    });
+    
     Route::group(['middleware' => ['role:pemilikUsaha']], function () {
         Route::post('/menu', [MenuController::class, 'store']);
         Route::put('rumah-makan/{rumahMakan}/menu/{menu}', [MenuController::class, 'update']);

@@ -37,6 +37,7 @@ class RumahMakanController extends Controller
             'alamat' => $request -> alamat,
             'jam_buka' => $request -> jam_buka,
             'jam_tutup' => $request -> jam_tutup,
+            'status' => $request -> status,
         ]);
 
         return (new RumahMakanResource($rumahMakan))->additional([

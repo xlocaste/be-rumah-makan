@@ -22,10 +22,11 @@ class RumahMakanUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama'=>'required',
-            'alamat'=>'required',
-            'jam_buka'=>'required',
-            'jam_tutup'=>'required',
+            'nama'=>'nullable',
+            'alamat'=>'nullable',
+            'jam_buka'=>'nullable',
+            'jam_tutup'=>'nullable',
+            'status'=>'required',
         ];
     }
 }

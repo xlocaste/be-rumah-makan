@@ -7,6 +7,7 @@ use App\Http\Requests\MenuUpdateRequest;
 use App\Http\Resources\MenuResource;
 use App\Models\Menu;
 use App\Models\RumahMakan;
+use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -65,6 +66,24 @@ class MenuController extends Controller
 
         return response()->json([
             'message' => 'Data berhasil di Hapus'
+        ]);
+    }
+
+    public function pesan($menuId, Request $request)
+    {
+        $request->validate([
+            'jumlah_pesan' => 'required|integer|min:1',
+        ]);
+
+        $jumlah_pesan = $request->input('jumlah_pesan');
+
+        $menu = Menu::find($menuId);
+
+        $menu->stok -= $request->jumlah_pesan;
+        $menu->save();
+
+        return (new MenuResource($menu))->additional([
+            'message' => 'Berhasil Memesan'
         ]);
     }
 }
